@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 
 from surveyor.models import Question, Tag
 
@@ -17,3 +18,11 @@ def question_view(request, question_id):
 def update_tags(request):
     """Update the tags for a question based on request"""
     pass
+
+
+def new_question(request):
+    if request.method == 'GET':
+        return render(request, "question/new_question_form.html")
+
+    if request.method == 'POST':
+        return HttpResponse('POST method not implemented yet', status=501)
