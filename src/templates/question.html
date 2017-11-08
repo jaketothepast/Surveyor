@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static "surveyor/main.css" %}" />
+{% endblock stylesheets %}
+
+{% block javascript %}
+<script src="{% static "surveyor/main.js" %}"></script>
+{% endblock javascript %}
+
+{% block content %}
+<p> Hello World </p>
+{% endblock %}
