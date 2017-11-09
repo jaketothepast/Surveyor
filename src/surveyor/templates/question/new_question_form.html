@@ -6,15 +6,7 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-
-    <label for="question">Question</label><br/>
-    <input type="text" id="question_input" name="question"></input>
-    <br/><br/>
-
-    <label for="email">Email Address</label><br/>
-    <input type="text" id="email_input" name="email"></input>
-    <br/><br/>
-
+    {{ form }}
     <input type="submit" action="{% url 'new_question_url' %}">
 </form>
 {% endblock %}
