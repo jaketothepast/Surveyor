@@ -20,5 +20,6 @@ from surveyor import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^question/(?P<question_id>\d+)', views.question_view)
+    url(r'^question/(?P<question_id>\d+)', views.question_view),
+    url(r'^question/new/$', views.new_question, name='new_question_url'),
 ]

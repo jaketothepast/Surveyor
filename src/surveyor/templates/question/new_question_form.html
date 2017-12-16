@@ -1,0 +1,12 @@
+{% extends "surveyor_base.html" %}
+{% load static %}
+
+{% block title %}Create a new question{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" action="{% url 'new_question_url' %}">
+</form>
+{% endblock %}
