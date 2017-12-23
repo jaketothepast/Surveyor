@@ -25,7 +25,7 @@ def update_tags(request):
 
 def new_question(request):
     if request.method == 'POST':
-        form = QuestionForm(request.POST)
+        form = QuestionForm()
         if form.is_valid():
             question = Question(**form.cleaned_data)
             question.save()

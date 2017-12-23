@@ -1,5 +1,15 @@
 from django import forms
+from surveyor.models import Question
 
+class QuestionForm(forms.ModelForm):
 
-class QuestionForm(forms.Form):
-    text = forms.CharField(label='Question', max_length=200)
+    class Meta:
+        model = Question
+        fields = ['text', 'expiration']
+
+        # Ensure that it is a date picker widget
+        widget = forms.DateInput()
+        widget.input_type = 'date'
+        widgets = {
+            'expiration': widget
+        }

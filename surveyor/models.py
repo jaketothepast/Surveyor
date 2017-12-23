@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class Tag(models.Model):
     question = models.ForeignKey("Question", on_delete=models.CASCADE)
@@ -6,3 +7,4 @@ class Tag(models.Model):
 
 class Question(models.Model):
     text = models.CharField(max_length=200)
+    expiration = models.DateTimeField(default=timezone.now())

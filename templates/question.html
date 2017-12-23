@@ -11,4 +11,9 @@
 
 {% block content %}
 <p>{{ question.text }}</p>
+
+{% for tag in tags %}
+<p>{{ tag.name }}</p>
+{% endfor %}
+
 {% endblock %}
