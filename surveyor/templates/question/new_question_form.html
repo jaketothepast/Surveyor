@@ -4,9 +4,10 @@
 {% block title %}Create a new question{% endblock %}
 
 {% block content %}
+<h1>What do you want to ask?</h1>
 <form method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <input type="submit" action="{% url 'new_question_url' %}">
 </form>
 {% endblock %}
