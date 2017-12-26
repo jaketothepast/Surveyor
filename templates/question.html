@@ -19,7 +19,7 @@
 {% for tag in object.tags %}
 <p>{{ tag.name }}</p>
 {% endfor %}
-
 {% endif %}
 
+<a href="{% url 'new_question_url' %}">Ask a new question?</a>
 {% endblock %}
