@@ -10,10 +10,16 @@
 {% endblock javascript %}
 
 {% block content %}
+
+{% if expired %}
+<p>Sorry, this question has expired</p>
+{% else %}
 <p>{{ question.text }}</p>
 
 {% for tag in tags %}
 <p>{{ tag.name }}</p>
 {% endfor %}
+
+{% endif %}
 
 {% endblock %}

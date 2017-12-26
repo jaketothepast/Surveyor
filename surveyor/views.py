@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.views.generic import CreateView
+from django.views.generic.detail import DetailView
 
 from surveyor.models import Question, Tag
 from .forms import QuestionForm
