@@ -8,3 +8,6 @@ class Tag(models.Model):
 class Question(models.Model):
     text = models.CharField(max_length=200)
     expiration = models.DateTimeField(default=timezone.now())
+
+    def get_absolute_url(self):
+        return f"/question/{self.id}"

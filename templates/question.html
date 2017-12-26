@@ -14,9 +14,9 @@
 {% if expired %}
 <p>Sorry, this question has expired</p>
 {% else %}
-<p>{{ question.text }}</p>
+<p>{{ object.text }}</p>
 
-{% for tag in tags %}
+{% for tag in object.tags %}
 <p>{{ tag.name }}</p>
 {% endfor %}
 

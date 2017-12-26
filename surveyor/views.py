@@ -38,4 +38,9 @@ class QuestionView(DetailView):
     """Show either a newly created question, or expiration page"""
 
     model = Question
-    template_name = "template/question.html"
+    template_name = "question.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['expired'] = self.object.expiration <= timezone.now()
+        return context
