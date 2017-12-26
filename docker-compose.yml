@@ -3,7 +3,8 @@ version: '3'
 services:
     db:
         image: postgres
-
+    redis:
+        image: redis
     web:
         build: .
         command: ./docker-entrypoint.sh
@@ -13,3 +14,4 @@ services:
             - "8000:8000"
         depends_on:
             - "db"
+            - "redis"
