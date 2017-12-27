@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.views.generic.detail import DetailView
 
 from surveyor.models import Question, Tag
+from surveyor.tasks import question_up
 from .forms import QuestionForm
 
 def update_tags(request):
@@ -16,6 +17,13 @@ class NewQuestionView(CreateView):
     model = Question
     form_class = QuestionForm
     template_name = "question/new_question_form.html"
+
+    def form_valid(self, form):
+        self.object = form.save()
+
+        # Save question to Redis queue
+        question_up(self.object.id)
+        return super().form_valid(form)
 
 class QuestionView(DetailView):
     """Show either a newly created question, or expiration page"""
