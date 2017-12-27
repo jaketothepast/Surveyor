@@ -12,13 +12,12 @@
 {% block content %}
 
 {% if expired %}
-<p>Sorry, this question has expired</p>
+    <p>Sorry, this question has expired</p>
 {% else %}
-<p>{{ object.text }}</p>
-
-{% for tag in object.tags %}
-<p>{{ tag.name }}</p>
-{% endfor %}
+    <p>{{ object.text }}</p>
+    {% for tag in object.tags %}
+        <p>{{ tag.name }}</p>
+    {% endfor %}
 {% endif %}
 
 <a href="{% url 'new_question_url' %}">Ask a new question?</a>

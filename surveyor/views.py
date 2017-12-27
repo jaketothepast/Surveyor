@@ -7,23 +7,6 @@ from django.views.generic.detail import DetailView
 from surveyor.models import Question, Tag
 from .forms import QuestionForm
 
-
-def question_view(request, question_id):
-    """Show the question"""
-    question = Question.objects.get(id=question_id)
-    tags = Tag.objects.filter(question=question)
-
-    expired = question.expired <= timezone.now()
-
-    data = {
-        'expired': expired,
-        'question': question if question else None,
-        'tags': tags if tags else None
-    }
-
-    return render(request, "question.html", context=data)
-
-
 def update_tags(request):
     """Update the tags for a question based on request"""
     pass
@@ -39,6 +22,10 @@ class QuestionView(DetailView):
 
     model = Question
     template_name = "question.html"
+
+    def post(self, request):
+        """Handle validation and saving of user response"""
+        pass
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

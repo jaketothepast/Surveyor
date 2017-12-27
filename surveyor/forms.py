@@ -13,3 +13,7 @@ class QuestionForm(forms.ModelForm):
         widgets = {
             'expiration': widget
         }
+
+class AnswerForm(forms.Form):
+    """Form for user to answer question"""
+    pass
