@@ -12,7 +12,7 @@ services:
             - "redis"
     web:
         build: .
-        command: ./docker-entrypoint.sh
+        command: ./docker-entrypoint-web.sh
         volumes:
             - .:/code
         ports:

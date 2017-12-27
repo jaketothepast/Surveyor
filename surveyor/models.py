@@ -11,3 +11,7 @@ class Question(models.Model):
 
     def get_absolute_url(self):
         return f"/question/{self.id}"
+
+class Answer(models.Model):
+    question = models.ForeignKey("Question")
+    text = models.CharField(max_length=500)
