@@ -5,6 +5,11 @@ services:
         image: postgres
     redis:
         image: redis
+    rq:
+        build: .
+        command: python3 ./worker/worker.py
+        depends_on:
+            - "redis"
     web:
         build: .
         command: ./docker-entrypoint.sh
