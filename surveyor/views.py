@@ -28,7 +28,8 @@ class QuestionView(FormView):
     success_url = '/question/new/'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        object = Question.objects.get(pk=kwargs['pk'])
-        context['expired'] = self.object.expiration >= timezone.now()
+        # print("REQUEST", self.request, kwargs)
+        object = Question.objects.get(id=self.kwargs['pk'])
+        context['object'] = object
+        context['expired'] = object.expiration >= timezone.now()
         return context
