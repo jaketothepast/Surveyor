@@ -8,9 +8,11 @@ from django.views.generic.detail import DetailView
 from surveyor.models import Question, Tag
 from .forms import QuestionForm, AnswerForm
 
+
 def update_tags(request):
     """Update the tags for a question based on request"""
     pass
+
 
 class NewQuestionView(CreateView):
     """Render a form to create a new question"""
@@ -18,7 +20,12 @@ class NewQuestionView(CreateView):
     form_class = QuestionForm
     template_name = "question/new_question_form.html"
 
+<<<<<<< HEAD
 class QuestionView(FormView):
+=======
+
+class QuestionView(DetailView):
+>>>>>>> master
     """Show either a newly created question, or expiration page"""
 
     template_name = "question.html"

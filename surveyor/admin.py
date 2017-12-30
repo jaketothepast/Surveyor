@@ -5,4 +5,3 @@ from .models import Question, Tag
 
 admin.site.register(Question)
 admin.site.register(Tag)
-
