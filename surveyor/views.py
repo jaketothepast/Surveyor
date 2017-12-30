@@ -3,15 +3,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.views.generic import CreateView
 from django.views.generic.edit import FormView
-from django.views.generic.detail import DetailView
 
-from surveyor.models import Question, Tag
+from surveyor.models import Question
 from .forms import QuestionForm, AnswerForm
-
-
-def update_tags(request):
-    """Update the tags for a question based on request"""
-    pass
 
 
 class NewQuestionView(CreateView):
