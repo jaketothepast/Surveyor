@@ -3,13 +3,6 @@ version: '3'
 services:
     db:
         image: postgres
-    redis:
-        image: redis
-    rq:
-        build: .
-        command: python3 ./worker/worker.py
-        depends_on:
-            - "redis"
     web:
         build: .
         command: ./docker-entrypoint-web.sh
@@ -19,4 +12,3 @@ services:
             - "8000:8000"
         depends_on:
             - "db"
-            - "redis"
