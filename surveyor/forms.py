@@ -1,6 +1,7 @@
 from django import forms
 from surveyor.models import Question
 
+
 class QuestionForm(forms.ModelForm):
 
     class Meta:
@@ -13,6 +14,7 @@ class QuestionForm(forms.ModelForm):
         widgets = {
             'expiration': widget
         }
+
 
 class AnswerForm(forms.Form):
     """Form for user to answer question"""
