@@ -18,9 +18,5 @@ class QuestionForm(forms.ModelForm):
 
 class AnswerForm(forms.Form):
     """Form for user to answer question"""
-<<<<<<< HEAD
 
     answer = forms.CharField(label="Answer:", max_length=500)
-=======
-    pass
->>>>>>> master

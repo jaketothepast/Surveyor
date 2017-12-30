@@ -20,12 +20,7 @@ class NewQuestionView(CreateView):
     form_class = QuestionForm
     template_name = "question/new_question_form.html"
 
-<<<<<<< HEAD
 class QuestionView(FormView):
-=======
-
-class QuestionView(DetailView):
->>>>>>> master
     """Show either a newly created question, or expiration page"""
 
     template_name = "question.html"
