@@ -7,6 +7,7 @@
 
 {% block javascript %}
 <script src="{% static "surveyor/main.js" %}"></script>
+
 {% endblock javascript %}
 
 {% block content %}
@@ -22,11 +23,16 @@
     <!-- copied and pasted from the Django docs for now -->
     <form action="" method="post">{% csrf_token %}
         {{ form.as_p }}
-        <input type="hidden", id="questionId", name="questionId", value="{{ object.id }}">
         <input type="submit" value="Send message" />
     </form>
     
 {% endif %}
 
 <a href="{% url 'new_question_url' %}">Ask a new question?</a>
+
+<!-- not the best place for this but putting here at the moment -->
+
+<script>
+    document.getElementById("id_question_id").value = "{{ object.id }}";
+</script>
 {% endblock %}

@@ -2,6 +2,7 @@ from django import forms
 from surveyor.models import Question
 
 from .utils import RedisClient
+from .models import Answer
 
 class QuestionForm(forms.ModelForm):
 
@@ -28,9 +29,12 @@ class QuestionForm(forms.ModelForm):
 class AnswerForm(forms.Form):
     """Form for user to answer question"""
     answer = forms.CharField(label="Answer:", max_length=500)
+    question_id = forms.CharField(widget=forms.HiddenInput(), max_length=500)
 
-    def save(self, commit=True):
+    def is_valid(self, *args, **kwargs):
         """Push the question answer to redis"""
-        email = RedisClient.get_question_email(self.cleaned_data['question_id'])
-        RedisClient.question_answer_to_redis(email, self.cleaned_data['question_id'],
-                                             self.cleaned_data['answer'])
+        result = super().is_valid(*args, **kwargs)
+        Answer.objects.create(text=self.cleaned_data['answer'],
+                              question_id=int(self.cleaned_data['question_id']))
+        return result
+
