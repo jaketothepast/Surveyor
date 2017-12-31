@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 
 from surveyor.models import Question
 from .forms import QuestionForm, AnswerForm
+from .utils import RedisClient
 
 
 class NewQuestionView(CreateView):
@@ -22,7 +23,11 @@ class QuestionView(FormView):
     success_url = '/question/new/'
 
     def get_context_data(self, **kwargs):
-        object = Question.objects.get(id=self.kwargs['pk'])
-        context['object'] = object
-        context['expired'] = object.expiration >= timezone.now()
+        self.object = Question.objects.get(id=self.kwargs['pk'])
+        context['object'] = self.object
+        context['expired'] = self.object.expiration >= timezone.now()
         return context
+
+    def form_valid(self, form):
+        """With the form.cleaned_data dict, push the question answer to redis"""
+        question_answer_to_redis()
