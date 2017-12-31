@@ -23,12 +23,9 @@ class QuestionView(FormView):
     success_url = '/question/new/'
 
     def get_context_data(self, **kwargs):
+        """Ensure that question is added to the context for the template"""
         self.object = Question.objects.get(id=self.kwargs['pk'])
         context = super().get_context_data(**kwargs)
         context['object'] = self.object
         context['expired'] = self.object.expiration >= timezone.now()
         return context
-
-    def form_valid(self, form):
-        """With the form.cleaned_data dict, push the question answer to redis"""
-        question_answer_to_redis()

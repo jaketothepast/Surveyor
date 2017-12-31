@@ -26,6 +26,7 @@ class RedisClient:
 
     @classmethod
     def question_to_redis(cls, email, question_id):
+        # This will eventually be the expiring key
         return cls.conn.set(question_id, email)
 
     @classmethod
@@ -35,4 +36,6 @@ class RedisClient:
     @classmethod
     def question_answer_to_redis(cls, email, question_id, answer):
         """Push to a list under a certain email on Redis"""
+
+        # Prevent keyspace collisions by using email:question_id?
         return cls.conn.sadd(f"{email}:{question_id}", answer)
