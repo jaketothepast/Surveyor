@@ -18,6 +18,13 @@
     {% for tag in object.tags %}
         <p>{{ tag.name }}</p>
     {% endfor %}
+
+    <!-- copied and pasted from the Django docs for now -->
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Send message" />
+    </form>
+    
 {% endif %}
 
 <a href="{% url 'new_question_url' %}">Ask a new question?</a>

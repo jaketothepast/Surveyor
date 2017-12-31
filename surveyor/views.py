@@ -2,15 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from django.views.generic import CreateView
-from django.views.generic.detail import DetailView
+from django.views.generic.edit import FormView
 
-from surveyor.models import Question, Tag
-from .forms import QuestionForm
-
-
-def update_tags(request):
-    """Update the tags for a question based on request"""
-    pass
+from surveyor.models import Question
+from .forms import QuestionForm, AnswerForm
 
 
 class NewQuestionView(CreateView):
@@ -19,18 +14,15 @@ class NewQuestionView(CreateView):
     form_class = QuestionForm
     template_name = "question/new_question_form.html"
 
-
-class QuestionView(DetailView):
+class QuestionView(FormView):
     """Show either a newly created question, or expiration page"""
 
-    model = Question
     template_name = "question.html"
-
-    def post(self, request):
-        """Handle validation and saving of user response"""
-        pass
+    form_class = AnswerForm
+    success_url = '/question/new/'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['expired'] = self.object.expiration >= timezone.now()
+        object = Question.objects.get(id=self.kwargs['pk'])
+        context['object'] = object
+        context['expired'] = object.expiration >= timezone.now()
         return context

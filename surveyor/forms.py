@@ -18,4 +18,5 @@ class QuestionForm(forms.ModelForm):
 
 class AnswerForm(forms.Form):
     """Form for user to answer question"""
-    pass
+
+    answer = forms.CharField(label="Answer:", max_length=500)
