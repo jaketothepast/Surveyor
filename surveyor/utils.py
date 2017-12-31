@@ -20,7 +20,7 @@ def get_redis_connection():
 # Answers will be pushed under question ID's somehow, and popped on report
 # Creation time.
 
-class RedisClient
+class RedisClient:
 
     conn = get_redis_connection()
 

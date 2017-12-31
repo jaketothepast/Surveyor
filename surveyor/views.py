@@ -24,6 +24,7 @@ class QuestionView(FormView):
 
     def get_context_data(self, **kwargs):
         self.object = Question.objects.get(id=self.kwargs['pk'])
+        context = super().get_context_data(**kwargs)
         context['object'] = self.object
         context['expired'] = self.object.expiration >= timezone.now()
         return context
