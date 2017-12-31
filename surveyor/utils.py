@@ -20,22 +20,22 @@ def get_redis_connection():
 # Answers will be pushed under question ID's somehow, and popped on report
 # Creation time.
 
-def question_to_redis(email, question_id):
+def question_answer_to_redis(email, question_id, answer):
     """Push to a list under a certain email on Redis"""
     
     conn = get_redis_connection()
 
-    conn.sadd(email, question_id)
+    conn.sadd(f"{email}:{question_id}", answer)
 
-def question_from_redis(email, question_id):
-    """Remove a question id from the set in Redis"""
+# def question_from_redis(email, question_id):
+#     """Remove a question id from the set in Redis"""
 
-    conn = get_redis_connection()
+#     conn = get_redis_connection()
 
-    result = conn.spop(email, question_id)
+#     result = conn.spop(email, question_id)
 
-    # spop returns a nil if nothing was popped
-    if not result:
-        return False
+#     # spop returns a nil if nothing was popped
+#     if not result:
+#         return False
 
-    return True
+#     return True
