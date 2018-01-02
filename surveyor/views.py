@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 
 from surveyor.models import Question
 from .forms import QuestionForm, AnswerForm
+from .utils import RedisClient
 
 
 class NewQuestionView(CreateView):
@@ -22,7 +23,9 @@ class QuestionView(FormView):
     success_url = '/question/new/'
 
     def get_context_data(self, **kwargs):
-        object = Question.objects.get(id=self.kwargs['pk'])
-        context['object'] = object
-        context['expired'] = object.expiration >= timezone.now()
+        """Ensure that question is added to the context for the template"""
+        self.object = Question.objects.get(id=self.kwargs['pk'])
+        context = super().get_context_data(**kwargs)
+        context['object'] = self.object
+        context['expired'] = self.object.expiration <= timezone.now()
         return context
