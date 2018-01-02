@@ -20,7 +20,7 @@ class QuestionView(FormView):
 
     template_name = "question.html"
     form_class = AnswerForm
-    success_url = '/question/new/'
+    success_url = '/success/'
 
     def get_context_data(self, **kwargs):
         """Ensure that question is added to the context for the template"""
