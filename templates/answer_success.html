@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<p>Thanks for answering! You may close this tab</p>
+
+<p>Or... <a href="{% url 'new_question_url' %}">ask your own question!</a></p>
+{% endblock %}
