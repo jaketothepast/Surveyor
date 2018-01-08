@@ -1,0 +1,9 @@
+{
+  "name": "surveyor2",
+  "version": "1.0.0",
+  "description": "Django Application for expiring survey links! Make data collection easy",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
