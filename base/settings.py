@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'surveyor',
+
+    # For Webpack
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +130,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
+
+STATICFILES_DIRS = {
+    # Django's collectstatic
+    os.path.join(BASE_DIR, 'assets'),
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE', os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}

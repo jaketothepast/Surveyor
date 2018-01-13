@@ -1,4 +1,4 @@
 django
 psycopg2
 redis
-django-npm
+django-webpack-loader
