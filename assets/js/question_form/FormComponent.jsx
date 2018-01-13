@@ -8,5 +8,3 @@ class FormBuilder extends React.Component {
         return <h1>FormBuilder</h1>;
     }
 }
-
-ReactDOM.render(<FormBuilder />, document.getElementById("mount"));
