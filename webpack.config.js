@@ -8,7 +8,7 @@ module.exports = {
 
     // The entry point for webpack
     entry: {main: './assets/js/main/index',
-            new_question: './assets/js/question_form/FormComponent'},
+            new_question: './assets/js/question_form/Form'},
 
     output: {
         // Where the compiled bundle is stored
