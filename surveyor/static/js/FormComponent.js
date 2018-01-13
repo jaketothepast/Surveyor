@@ -1,9 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import {React, ReactDOM} from 'react';
 
 /**
  * Factory for creating form components for questions
  */
-class FormComponent {
+class FormComponent extends React.Component {
     
 }
