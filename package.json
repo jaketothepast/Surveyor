@@ -2,8 +2,16 @@
   "name": "surveyor2",
   "version": "1.0.0",
   "description": "Django Application for expiring survey links! Make data collection easy",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "jquery": "^3.2.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "webpack": "^3.10.0",
+    "webpack-bundle-tracker": "^0.2.1"
   }
 }
