@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import FormComponents from './FormComponents';
 /**
  * Factory for creating form components for questions
  */
@@ -31,12 +32,12 @@ class Form extends React.Component {
 
     render() {
         return (
-            <h1>FormBuilder</h1>
-            <input type="button">Create Form Component</input>
-            <FormComponents />
+            <div>
+                <h1>FormBuilder</h1>
+                <input type="button" value="Click Me"></input>
+            </div>
         );
     }
 }
 
 ReactDOM.render(<Form />, document.getElementById('mount'))
-https://angel.co/
