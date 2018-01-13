@@ -7,7 +7,8 @@ module.exports = {
     context: __dirname,
 
     // The entry point for webpack
-    entry: './assets/js/index',
+    entry: {main: './assets/js/main/index',
+            new_question: './assets/js/question_form/form'},
 
     output: {
         // Where the compiled bundle is stored
