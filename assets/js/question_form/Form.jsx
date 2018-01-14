@@ -31,8 +31,10 @@ class Form extends React.Component {
     /* Need a call to this.setState for button pushes */
 
     newFormComponent() {
-        this.state.formComponents.push(new FormComponent());
-        ReactDOM.render(this, document.getElementById('mount'))
+        this.state.formComponents.push({message: "im a component"})
+        // TODO -- have a form component chooser widget that provides input to add component
+        // TODO -- each child in array should have unique "KEY" prop
+        ReactDOM.render(<Form />, document.getElementById('mount'))
     }
 
     render() {
@@ -41,7 +43,7 @@ class Form extends React.Component {
                 <h1>FormBuilder</h1>
                 <input type="button" value="Click Me" onClick={this.newFormComponent}></input>
                 <div id="formComponentContainer" >
-                    {this.state.formComponents}
+                    <FormComponents componentList={this.state.formComponents} />
                 </div>
             </div>
         );
