@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^question/(?P<pk>\d+)/$', views.QuestionView.as_view()),
     url(r'^question/new/$', views.NewQuestionView.as_view(), name='new_question_url'),
     url(r'^success/$', TemplateView.as_view(template_name="answer_success.html")),
-    url(r'^question_types/$', views.get_question_subtypes),
+    url(r'^question_types/$', views.get_sub_question_types),
 ]

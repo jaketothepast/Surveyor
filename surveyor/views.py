@@ -32,4 +32,4 @@ class QuestionView(FormView):
 
 def get_sub_question_types(request):
     """Return JSON object of subquestion types for Frontend"""
-    return JsonResponse(Question.SUBTYPES)
+    return JsonResponse(Question.SUBTYPES, safe=False)

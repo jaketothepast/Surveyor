@@ -20,14 +20,18 @@ class Form extends React.Component {
 
     /* Lifecycle hooks */
 
+    /* Called if component will mount */
+    componentWillMount() {
+    }
+
     /* Runs after component output rendered to DOM */
     componentDidMount() {
+
         fetch("/question_types/")
             .then(function(response) {
                 return response.json();
             })
-            .then(function(json) {
-                console.log("Got question subtypes")
+            .then((json) => {
                 this.state.questionTypes = json;
                 this.setState(this.state);
             }).catch(function(ex) {
@@ -56,10 +60,8 @@ class Form extends React.Component {
                 <select name="formComponentTypes">
                     // TODO populate via ajax
                     {this.state.questionTypes.map((qt) => {
-                         return (
-                             <option value="{qt}">{qt}</option>
-                         )
-                    }}
+                         return <option value="{qt}">{qt}</option>
+                    })}
                 </select>
                 <input type="button" value="Click Me" onClick={this.newFormComponent}></input>
                 <div id="formComponentContainer" >
