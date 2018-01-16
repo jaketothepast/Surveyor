@@ -10,6 +10,14 @@ class Question(models.Model):
     text = models.CharField(max_length=200)
     expiration = models.DateTimeField(default=timezone.now())
 
+    # TODO -- just adding these arbitrary types for testing
+    SUBTYPES = [
+        'text',
+        'date',
+        'radio',
+        'email',
+    ]
+
     def get_absolute_url(self):
         return f"/question/{self.id}"
 

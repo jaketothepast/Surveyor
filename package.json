@@ -2,7 +2,9 @@
   "name": "surveyor2",
   "version": "1.0.0",
   "description": "Django Application for expiring survey links! Make data collection easy",
-  "dependencies": {},
+  "dependencies": {
+    "whatwg-fetch": "^2.0.3"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

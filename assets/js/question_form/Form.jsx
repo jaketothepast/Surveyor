@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import FormComponents from './FormComponents';
 import FormComponent from './FormComponent';
 
+import 'whatwg-fetch';
 /**
  * Factory for creating form components for questions
  */
@@ -11,7 +12,8 @@ class Form extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {formComponents: []};
+        this.state = {formComponents: [],
+                      questionTypes: []};
 
         this.newFormComponent = this.newFormComponent.bind(this);
     }
@@ -20,7 +22,17 @@ class Form extends React.Component {
 
     /* Runs after component output rendered to DOM */
     componentDidMount() {
-
+        fetch("/question_types/")
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(json) {
+                console.log("Got question subtypes")
+                this.state.questionTypes = json;
+                this.setState(this.state);
+            }).catch(function(ex) {
+                console.log("Could not get question subtypes");
+            })
     }
 
     /* Runs after removed from DOM */
@@ -41,6 +53,14 @@ class Form extends React.Component {
         return (
             <div>
                 <h1>FormBuilder</h1>
+                <select name="formComponentTypes">
+                    // TODO populate via ajax
+                    {this.state.questionTypes.map((qt) => {
+                         return (
+                             <option value="{qt}">{qt}</option>
+                         )
+                    }}
+                </select>
                 <input type="button" value="Click Me" onClick={this.newFormComponent}></input>
                 <div id="formComponentContainer" >
                     <FormComponents componentList={this.state.formComponents} />

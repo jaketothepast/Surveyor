@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse
 from django.utils import timezone
 from django.views.generic import CreateView
 from django.views.generic.edit import FormView
@@ -29,3 +29,7 @@ class QuestionView(FormView):
         context['object'] = self.object
         context['expired'] = self.object.expiration <= timezone.now()
         return context
+
+def get_sub_question_types(request):
+    """Return JSON object of subquestion types for Frontend"""
+    return JsonResponse(Question.SUBTYPES)

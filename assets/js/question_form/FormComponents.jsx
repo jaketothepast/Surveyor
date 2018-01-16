@@ -8,8 +8,9 @@ export default class FormComponents extends React.Component {
     }
 
     render() {
-        return (this.props.componentList.map((component) => (
-                <FormComponent message={component.message} />))
+        return (
+            this.props.componentList.map((component) => (
+                <FormComponent type={component.type} message={component.message} />))
         )
     }
 }
